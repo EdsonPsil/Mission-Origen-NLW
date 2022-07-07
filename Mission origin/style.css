@@ -1,0 +1,286 @@
+/*===========GERAL==============================*/
+*{
+  margin: 0;
+  padding: 0;
+ box-sizing: border-box;
+}
+:root{
+  font-size: 62.5%;/*esse valor transforma 16px em 10px*/
+--primay-color: hsl(170, 100%, 26%);
+--headline: hsl(210, 11%,15%);
+--paragraph: hsl(210,9%,31%);
+--brand-beige:hsl(39,100%,89%);
+--green-light:hsl(148, 23%, 89%);
+--nav-height: 7.2rem;
+}
+.wrapper{
+  width: 37.5rem;
+  margin-inline: auto;
+  padding-inline: 2.4rem;
+}
+/*===Evita problemas de rolagen de pagina*/
+htlm,body{
+  width: 100%;
+  height: 100%;
+}
+/*========================================*/
+body{
+  font-family: 'DM Sans';
+  font-size: 1.6rem;/* esse valor corresponde a 16px*/
+  text-align: center;
+
+  overflow: overlay;
+}
+ul{
+  list-style: none;
+}
+/*===========HEADER==============================*/
+header{
+  margin-top: calc(4.1rem + var(--nav-height));
+}
+
+header::before{
+  content: "";
+  width: 100%; /*usando percentual acaba com a barra de rolagem*/
+  height: calc(108rem + var(--nav-height));
+  background-color:rgb(201, 221, 201);
+  display:block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* serve para jogar o objeto para tras*/
+}
+
+header h4{
+  font-size: 1.4rem;
+  color: var(--primay-color);
+  margin-bottom: 1.6rem;
+  
+}
+header h1{
+  font-size: 3.4rem;
+  color: var(--headline);
+  line-height: 130%;
+  margin-bottom: 2.4rem;
+  
+
+}
+header p{
+  font-size: 1.8rem;
+  line-height: 150%;
+  font-weight: 400;
+  color: var(--paragraph);
+  margin-bottom: 3.2rem;
+ 
+}
+header button{
+  background-color: var(--primay-color);
+  margin-bottom: 6rem;
+  height: 6.2rem;
+  width: 26.3rem;
+  color: white;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 700;
+
+  border: none;
+  border-radius: 4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  margin-inline: auto;
+}
+header img{
+  width: 26.4rem;
+  display: block;
+  margin-inline: auto;
+  object-position: 0 2rem;
+}
+
+.stats{
+  width: 32.7rem; 
+  padding-block: 4rem;
+  margin-inline: auto;
+
+  background-color: var(--brand-beige);
+  border: 1px solid var(--green-light);
+  border-radius: .6rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  gap: 6rem; 
+}
+.stats h3{
+  font-size: 4.8rem;
+  color: var(--headline);
+  line-height: 130%;
+  margin-bottom: 0.4rem;
+
+  
+}
+.stats p{
+ margin: 0;
+ color: var(--primay-color);
+ line-height: 150%;
+ font-size: 1.6rem;
+}
+/*==========NAVIGATOR===========*/
+
+div.wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+nav{
+  display: flex;
+  height: var(--nav-height);
+  padding: 1.6rem 2.4rem;
+ 
+
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  
+}
+nav.scroll{
+  background-color:var(--primay-color); 
+  width: 100vw;
+}
+
+nav.scroll svg:nth-child(1) path{
+  fill: white;
+}
+nav.scroll button path {
+  stroke: white;
+}
+nav button{
+  background: none;
+  border:none;
+  cursor: pointer;
+}
+/*==========MENU-EXPANDED===========*/
+body.menu-expanded {
+  overflow: hidden; /* elinina as bordas lateral e de baixo*/
+}
+
+/*A pseudo classe :not() faz com que ao utilizar o display: none, o elemento especificdo dentro dos parenteses não desaparessa*/
+body.menu-expanded >  :not(nav){
+  display: none;
+}
+.menu, .close-menu, 
+body.menu-expanded .open-menu {
+  opacity: 0;
+  visibility: hidden;
+}
+body.menu-expanded .menu, 
+body.menu-expanded .close-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.menu-expanded .menu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--primay-color);
+
+  width: 100vw;
+  height: 100vh;
+  padding-top: var(--nav-height);
+}
+body.menu-expanded nav{
+  position: relative;
+}
+
+.social-links{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.2rem;
+}
+/* atributo nth-child seleciona o primeiro filho dentro do elemento*/
+.menu ul:nth-child(1){
+  display: flex;
+  flex-direction: column;
+  gap: 4.8rem;
+  margin-top: 6rem;
+ 
+}
+.menu ul li a{
+  text-decoration: none;
+  color: #fffAf1;
+  font-weight: 600;
+  font-size: 2.4rem;
+  line-height: 3.1rem;
+
+}
+.menu .button {
+  display: inline-block;
+  padding: 1.6rem 3.2rem;
+  margin-top:4.8rem;
+  margin-bottom: 8rem;
+
+  background-color: #ffffff;
+  border-radius: 4rem;
+  color: var(--primay-color);
+  
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 2.3rem;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+body.menu-expanded .logo,
+body.menu-expanded button {
+  position: relative;
+  z-index: 100;
+}
+body.menu-expanded .logo path {
+  fill:#ffffff;
+}
+body.menu-expanded button path {
+  stroke: #ffffff;
+}
+
+/*========== SERVICES ===========*/
+#services header h4{
+  font-size: 1.4rem;
+  line-height: 150%;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+
+  color: var(--primay-color);
+  margin-bottom:1.6rem ;
+}
+#services header h2{
+  font-size: 3rem;
+  line-height: 3.9rem;
+  color: var(--headline);
+margin-bottom: 6rem;
+}
+
+#services .cards{
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+#services .card{
+  padding: 2.4rem;
+  text-align: left;
+
+  background: white;
+
+  border: 1px solid var(--green-light);
+
+  border-radius: .6rem;
+}
+.card h3{
+  margin-block: 1.6rem;
+}
